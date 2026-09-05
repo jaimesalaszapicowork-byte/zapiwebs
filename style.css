@@ -39,14 +39,11 @@ header {
 }
 
 .logo {
-    color: #f8fafc;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-
-.logo span {
-    color: #38bdf8;
+    display: block;
+    width: clamp(145px, 16.5vw, 223px);
+    height: auto;
+    max-height: 40px;
+    object-fit: contain;
 }
 
 .nav-links {
@@ -910,6 +907,12 @@ footer {
         position: relative;
     }
 
+    .logo {
+        width: 145px;
+        max-width: calc(100% - 58px);
+        max-height: 34px;
+    }
+
     .menu-toggle {
         display: block;
         order: 3;
@@ -954,23 +957,42 @@ footer {
         padding: 130px 22px 70px;
     }
 
+    .hero::after {
+        width: 280px;
+        height: 280px;
+        right: 0;
+        bottom: -160px;
+    }
+
+    .hero-content {
+        flex: 0 1 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
     .hero h1 {
-        font-size: clamp(2.9rem, 13vw, 4.6rem);
-        line-height: 1;
+        width: 100%;
+        font-size: clamp(2.35rem, 10vw, 4rem);
+        line-height: 1.05;
+        overflow-wrap: anywhere;
     }
 
     .hero-description {
+        width: 100%;
+        max-width: 100%;
         font-size: 16px;
     }
 
     .hero-buttons {
         width: 100%;
-        max-width: 360px;
+        max-width: 100%;
         margin-right: auto;
         margin-left: auto;
     }
 
     .hero-buttons a {
+        width: 100%;
+        min-width: 0;
         text-align: center;
     }
 
