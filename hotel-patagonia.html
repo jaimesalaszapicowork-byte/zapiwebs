@@ -19,7 +19,12 @@
                 <span class="brand-mark">HP</span>
                 <span>Hotel <strong>Patagonia</strong></span>
             </a>
-            <div class="nav-links">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="mobile-navigation">
                 <a href="#habitaciones">Habitaciones</a>
                 <a href="#experiencias">Experiencias</a>
                 <a href="#ubicacion">Ubicación</a>
@@ -135,6 +140,24 @@
         <div class="footer-main container"><a class="brand" href="#inicio"><span class="brand-mark">HP</span><span>Hotel <strong>Patagonia</strong></span></a><p>Un refugio al sur de todo.</p><a class="back-top" href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a></div>
         <div class="footer-bottom container"><span>Proyecto conceptual para ZapiWebs</span><span>© 2026 Hotel Patagonia</span><span>Diseñado para perderse un poco</span></div>
     </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navigation = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navigation.classList.toggle('is-open');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        });
+
+        navigation.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navigation.classList.remove('is-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.setAttribute('aria-label', 'Abrir menú');
+            });
+        });
+    </script>
 </body>
 
 </html>
