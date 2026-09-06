@@ -16,6 +16,11 @@ a { color: inherit; text-decoration: none; }
 .nav-links a:hover, .nav-cta:hover, .text-link:hover { color: var(--gold); }
 .nav-cta { border-bottom: 1px solid var(--copper); padding-bottom: 5px; }
 .nav-cta span, .button span, .text-link span { margin-left: 9px; }
+.menu-toggle { background: transparent; border: 1px solid rgba(196,122,74,.8); color: var(--gold); display: none; height: 40px; padding: 8px; width: 44px; }
+.menu-toggle span { background: currentColor; display: block; height: 1px; margin: 4px auto; transition: transform .2s ease, opacity .2s ease; width: 22px; }
+.menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(5px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-5px) rotate(-45deg); }
 .hero { align-items: center; background: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2200&q=85') center/cover; display: flex; min-height: 760px; position: relative; }
 .hero-overlay { background: linear-gradient(90deg, rgba(13,12,11,.92), rgba(13,12,11,.35) 63%, rgba(13,12,11,.28)), linear-gradient(0deg, rgba(13,12,11,.64), transparent 48%); inset: 0; position: absolute; }
 .hero-content { padding-top: 75px; position: relative; }
@@ -77,9 +82,13 @@ h2 { font-size: clamp(43px, 5vw, 67px); }
 
 @media (max-width: 800px) {
 	.container { width: calc(100% - 42px); }
-	.nav { padding-top: 20px; }
-	.nav-links { display: none; }
-	.nav-cta { font-size: 11px; }
+	.nav { padding-top: 20px; position: relative; }
+	.menu-toggle { display: block; margin-left: auto; }
+	.nav-links { background: rgba(23,21,19,.98); border: 1px solid rgba(196,122,74,.45); display: flex; flex-direction: column; gap: 0; left: 0; margin: 0; opacity: 0; padding: 9px 18px; pointer-events: none; position: absolute; right: 0; top: calc(100% - 1px); transform: translateY(-8px); transition: opacity .2s ease, transform .2s ease; visibility: hidden; }
+	.nav-links.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+	.nav-links a { border-bottom: 1px solid rgba(238,231,218,.12); font-size: 12px; padding: 14px 0; }
+	.nav-links a:last-child { border-bottom: 0; }
+	.nav-cta { display: none; }
 	.hero { min-height: 680px; }
 	.hero-content { padding-top: 60px; }
 	.hero-note { display: none; }
